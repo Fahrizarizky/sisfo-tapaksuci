@@ -8,6 +8,42 @@
             </button>
         </div>
 
+        <!-- Modal Edit -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-white">
+                        <h5 class="modal-title" id="editModalLabel">Tambah Data</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/dashboard/ketingkatan/store" method="POST">
+                            @csrf
+
+                            <div class="mb-3">
+                                <label class="form-label">Kode</label>
+                                <input type="text" name="kode" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Kategori</label>
+                                <input type="text" name="kategori" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Tingkatan</label>
+                                <input type="text" name="tingkatan" class="form-control" required>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-warning">Simpan Perubahan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
          <!-- Modal Create -->
          <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -97,42 +133,7 @@
                                 </tbody>
                             </table>
                             
-                            <!-- Modal Create -->
-                            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header bg-warning text-white">
-                                            <h5 class="modal-title" id="editModalLabel">Tambah Data</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="/dashboard/ketingkatan/store" method="POST">
-                                                @csrf
-
-                                                <div class="mb-3">
-                                                    <label class="form-label">Kode</label>
-                                                    <input type="text" name="kode" class="form-control" required>
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label class="form-label">Kategori</label>
-                                                    <input type="text" name="kategori" class="form-control" required>
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label class="form-label">Tingkatan</label>
-                                                    <input type="text" name="tingkatan" class="form-control" required>
-                                                </div>
-
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                    <button type="submit" class="btn btn-warning">Simpan Perubahan</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             
                         </tbody>
                     </table>
