@@ -79,11 +79,7 @@
                                         <td>{{ $ketingkatan->tingkatan }}</td>
                                         <td>
                                             <!-- Tombol Edit -->
-                                            <button type="button" class="btn btn-warning btn-sm btn-edit"
-                                                data-id="{{ $ketingkatan->id }}"
-                                                data-kode="{{ $ketingkatan->kode }}"
-                                                data-kategori="{{ $ketingkatan->kategori }}"
-                                                data-tingkatan="{{ $ketingkatan->tingkatan }}">
+                                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
                                                 <i class="bi bi-pencil-square"></i>
                                             </button>
                             
@@ -101,36 +97,33 @@
                                 </tbody>
                             </table>
                             
-                            <!-- Modal Edit (Hanya Satu Modal) -->
+                            <!-- Modal Create -->
                             <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header bg-warning text-white">
-                                            <h5 class="modal-title" id="editModalLabel">Edit Data</h5>
+                                            <h5 class="modal-title" id="editModalLabel">Tambah Data</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form id="editForm" method="POST">
+                                            <form action="/dashboard/ketingkatan/store" method="POST">
                                                 @csrf
-                                                @method('PUT')
-                            
-                                                <input type="hidden" name="id" id="editId">
-                            
+
                                                 <div class="mb-3">
                                                     <label class="form-label">Kode</label>
-                                                    <input type="text" name="kode" id="editKode" class="form-control" required>
+                                                    <input type="text" name="kode" class="form-control" required>
                                                 </div>
-                            
+
                                                 <div class="mb-3">
                                                     <label class="form-label">Kategori</label>
-                                                    <input type="text" name="kategori" id="editKategori" class="form-control" required>
+                                                    <input type="text" name="kategori" class="form-control" required>
                                                 </div>
-                            
+
                                                 <div class="mb-3">
                                                     <label class="form-label">Tingkatan</label>
-                                                    <input type="text" name="tingkatan" id="editTingkatan" class="form-control" required>
+                                                    <input type="text" name="tingkatan" class="form-control" required>
                                                 </div>
-                            
+
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                                     <button type="submit" class="btn btn-warning">Simpan Perubahan</button>
