@@ -94,46 +94,54 @@
                                 </td>
                             </tr>
 
-                            <!-- Modal Edit -->
-                            <div class="modal fade" id="editModal{{ $ketingkatan->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $ketingkatan->id }}" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header bg-warning text-white">
-                                            <h5 class="modal-title" id="editModalLabel{{ $ketingkatan->id }}">Edit Data</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="/dashboard/ketingkatan/update/{{$ketingkatan->id}}" method="POST">
-                                                @csrf
-                                                @method('PUT')
+                             <!-- Modal Edit (Dibuat Sekali per Iterasi dengan once) -->
+                                    @once
+                                    @push('modals')
+                                        @foreach ($ketingkatans as $k)
+                                            <div class="modal fade" id="editModal{{ $k->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $k->id }}" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header bg-warning text-white">
+                                                            <h5 class="modal-title" id="editModalLabel{{ $k->id }}">Edit Data</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="/dashboard/ketingkatan/update/{{$k->id}}" method="POST">
+                                                                @csrf
+                                                                @method('PUT')
 
-                                                <div class="mb-3">
-                                                    <label class="form-label">Kode</label>
-                                                    <input type="text" name="kode" class="form-control" value="{{ $ketingkatan->kode }}" required>
-                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Kode</label>
+                                                                    <input type="text" name="kode" class="form-control" value="{{ $k->kode }}" required>
+                                                                </div>
 
-                                                <div class="mb-3">
-                                                    <label class="form-label">Kategori</label>
-                                                    <input type="text" name="kategori" class="form-control" value="{{ $ketingkatan->kategori }}" required>
-                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Kategori</label>
+                                                                    <input type="text" name="kategori" class="form-control" value="{{ $k->kategori }}" required>
+                                                                </div>
 
-                                                <div class="mb-3">
-                                                    <label class="form-label">Tingkatan</label>
-                                                    <input type="text" name="tingkatan" class="form-control" value="{{ $ketingkatan->tingkatan }}" required>
-                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Tingkatan</label>
+                                                                    <input type="text" name="tingkatan" class="form-control" value="{{ $k->tingkatan }}" required>
+                                                                </div>
 
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                    <button type="submit" class="btn btn-warning">Simpan Perubahan</button>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                                    <button type="submit" class="btn btn-warning">Simpan Perubahan</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                            </div>
+                                        @endforeach
+                                    @endpush
+                                @endonce
                             @endforeach
-                            
                         </tbody>
+
+                        <!-- Tempatkan @stack('modals') di bagian bawah halaman -->
+                        @stack('modals')
                     </table>
                 </div>
             </div>
