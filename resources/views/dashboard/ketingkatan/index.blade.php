@@ -70,58 +70,67 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach ($ketingkatans as $ketingkatan)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $ketingkatan->kode }}</td>
-                                <td>{{ $ketingkatan->kategori }}</td>
-                                <td>{{ $ketingkatan->tingkatan }}</td>
-                                <td>
-                                    <!-- Tombol Edit -->
-                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $ketingkatan->id }}">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
-
-                                    <!-- Tombol Hapus -->
-                                    <form action="/dashboard/ketingkatan/delete/{{$ketingkatan->id}}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                                
-                            {{-- Modal Edit --}}
-                            <div class="modal fade" id="editModal{{ $ketingkatan->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $ketingkatan->id }}" aria-hidden="true">
+                                <tbody>
+                                    @foreach ($ketingkatans as $ketingkatan)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $ketingkatan->kode }}</td>
+                                        <td>{{ $ketingkatan->kategori }}</td>
+                                        <td>{{ $ketingkatan->tingkatan }}</td>
+                                        <td>
+                                            <!-- Tombol Edit -->
+                                            <button type="button" class="btn btn-warning btn-sm btn-edit"
+                                                data-id="{{ $ketingkatan->id }}"
+                                                data-kode="{{ $ketingkatan->kode }}"
+                                                data-kategori="{{ $ketingkatan->kategori }}"
+                                                data-tingkatan="{{ $ketingkatan->tingkatan }}">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </button>
+                            
+                                            <!-- Tombol Hapus -->
+                                            <form action="/dashboard/ketingkatan/delete/{{$ketingkatan->id}}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            
+                            <!-- Modal Edit (Hanya Satu Modal) -->
+                            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header bg-warning text-white">
-                                            <h5 class="modal-title" id="editModalLabel{{ $ketingkatan->id }}">Edit Data</h5>
+                                            <h5 class="modal-title" id="editModalLabel">Edit Data</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="/dashboard/ketingkatan/update/{{$ketingkatan->id}}" method="POST">
+                                            <form id="editForm" method="POST">
                                                 @csrf
                                                 @method('PUT')
-
+                            
+                                                <input type="hidden" name="id" id="editId">
+                            
                                                 <div class="mb-3">
                                                     <label class="form-label">Kode</label>
-                                                    <input type="text" name="kode" class="form-control" value="{{ $ketingkatan->kode }}" required>
+                                                    <input type="text" name="kode" id="editKode" class="form-control" required>
                                                 </div>
-
+                            
                                                 <div class="mb-3">
                                                     <label class="form-label">Kategori</label>
-                                                    <input type="text" name="kategori" class="form-control" value="{{ $ketingkatan->kategori }}" required>
+                                                    <input type="text" name="kategori" id="editKategori" class="form-control" required>
                                                 </div>
-
+                            
                                                 <div class="mb-3">
                                                     <label class="form-label">Tingkatan</label>
-                                                    <input type="text" name="tingkatan" class="form-control" value="{{ $ketingkatan->tingkatan }}" required>
+                                                    <input type="text" name="tingkatan" id="editTingkatan" class="form-control" required>
                                                 </div>
-
+                            
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                                     <button type="submit" class="btn btn-warning">Simpan Perubahan</button>
@@ -131,10 +140,8 @@
                                     </div>
                                 </div>
                             </div>
-
-                            @endforeach
+                            
                         </tbody>
-
                     </table>
                 </div>
             </div>
