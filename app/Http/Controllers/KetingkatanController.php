@@ -21,6 +21,11 @@ class KetingkatanController extends Controller
         return redirect('dashboard/ketingkatan')->with('message', 'Berhasil menambahkan data');
     }
 
+    public function editKetingkatan($id) {
+        $ketingkatan = Ketingkatan::find($id);
+        return view('dashboard.ketingkatan.edit',compact('ketingkatan'));
+    }
+
     public function updateKetingkatan($id) {
         $ketingkatan = Ketingkatan::find($id);
         $ketingkatan->update([

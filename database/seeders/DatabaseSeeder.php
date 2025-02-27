@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Keanggotaan;
 use App\Models\Ketingkatan;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -96,5 +97,15 @@ class DatabaseSeeder extends Seeder
             'kategori' => 'Siswa',
             'tingkatan' => 'Siswa Dasar'
         ]);
+
+        // Keanggotaan::create([
+        //     'nikd' => '1',
+        //     'nbts' => '1',
+        //     'nama' => 'nama 1',
+        //     'jenis_kelamin' => 'pria',
+        //     'tempat_lahir' => 'tempat 1',
+        //     'tanggal_lahir' => date(now()),
+        //     'tahun_masuk'
+        // ]);
     }
 }

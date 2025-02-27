@@ -112,40 +112,6 @@
     <script src="{{ asset('/assets/startbootstrap-sb-admin-2-gh-pages/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('/assets/startbootstrap-sb-admin-2-gh-pages/js/demo/chart-pie-demo.js') }}"></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    let editModalElement = document.getElementById("editModal");
-    let editModal = new bootstrap.Modal(editModalElement);
-
-    document.querySelectorAll(".btn-edit").forEach(function (button) {
-        button.addEventListener("click", function () {
-            let id = this.getAttribute("data-id");
-            let kode = this.getAttribute("data-kode");
-            let kategori = this.getAttribute("data-kategori");
-            let tingkatan = this.getAttribute("data-tingkatan");
-
-            document.getElementById("editId").value = id;
-            document.getElementById("editKode").value = kode;
-            document.getElementById("editKategori").value = kategori;
-            document.getElementById("editTingkatan").value = tingkatan;
-
-            document.getElementById("editForm").setAttribute("action", `/dashboard/ketingkatan/update/${id}`);
-
-            // Tampilkan modal
-            editModal.show();
-        });
-    });
-
-    // Pastikan tombol close dan batal menutup modal dengan benar
-    document.querySelectorAll("[data-bs-dismiss='modal']").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-            editModal.hide();
-        });
-    });
-});
-
-    </script>
-
 </body>
 
 </html>

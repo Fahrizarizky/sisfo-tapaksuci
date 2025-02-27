@@ -18,14 +18,6 @@
             <span>Dashboard</span></a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Interface
-    </div>
-
     <!-- Tingkatan -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -67,6 +59,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Components:</h6>
                 <a class="collapse-item" href="/dashboard/cabanglatihan">Cabang Latihan</a>
+                <a class="collapse-item" href="/dashboard/cabanglatihan/admincabang">Admin Cabang</a>
             </div>
         </div>
     </li>
@@ -81,37 +74,74 @@
         <div id="collapseTwo4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="/dashboard/kegiatan">Kegiatan</a>
+                <a class="collapse-item" href="/dashboard/kegiatan">UKT Siswa</a>
+                <a class="collapse-item" href="/dashboard/kegiatan">LKPTS</a>
+                <a class="collapse-item" href="/dashboard/kegiatan">Job Training</a>
+                <a class="collapse-item" href="/dashboard/kegiatan">Musyda</a>
+                <a class="collapse-item" href="/dashboard/kegiatan">Lainya</a>
+                <a class="collapse-item" href="/dashboard/kegiatan">Admin Kegiatan</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Prestasi -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo5"
+            aria-expanded="true" aria-controls="collapseTwo5">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Prestasi</span>
+        </a>
+        <div id="collapseTwo5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Components:</h6>
+                <a class="collapse-item" href="/dashboard/keuangan">Prestasi</a>
             </div>
         </div>
     </li>
 
     <!-- Keuangan -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo5"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6"
             aria-expanded="true" aria-controls="collapseTwo5">
             <i class="fas fa-fw fa-cog"></i>
             <span>Keuangan</span>
         </a>
-        <div id="collapseTwo5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="/dashboard/keuangan">Keuangan</a>
+                <a class="collapse-item" href="/dashboard/keuangan">Pemasukan</a>
+                <a class="collapse-item" href="/dashboard/keuangan">Pengeluaran</a>
             </div>
         </div>
     </li>
 
     <!-- Surat -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo7"
             aria-expanded="true" aria-controls="collapseTwo6">
             <i class="fas fa-fw fa-cog"></i>
             <span>Surat</span>
         </a>
-        <div id="collapseTwo6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo7" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="/dashboard/surat">Surat</a>
+                <a class="collapse-item" href="/dashboard/surat">Keluar</a>
+                <a class="collapse-item" href="/dashboard/surat">Masuk</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Kaderisasi -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo8"
+            aria-expanded="true" aria-controls="collapseTwo6">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Kaderisasi</span>
+        </a>
+        <div id="collapseTwo8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Components:</h6>
+                <a class="collapse-item" href="/dashboard/surat">Kaderisasi</a>
             </div>
         </div>
     </li>

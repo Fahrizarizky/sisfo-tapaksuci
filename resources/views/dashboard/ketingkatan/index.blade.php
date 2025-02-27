@@ -3,47 +3,11 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Ketingkatan</h1>
-            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
-                <i class="bi bi-plus-square"></i> Tingkatan
+            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
+                <i class="fas fa-plus fa-sm text-white-50"></i> Tingkatan
             </button>
         </div>
 
-        <!-- Modal Edit -->
-        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header bg-warning text-white">
-                        <h5 class="modal-title" id="editModalLabel">Tambah Data</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/dashboard/ketingkatan/store" method="POST">
-                            @csrf
-
-                            <div class="mb-3">
-                                <label class="form-label">Kode</label>
-                                <input type="text" name="kode" class="form-control" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Kategori</label>
-                                <input type="text" name="kategori" class="form-control" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Tingkatan</label>
-                                <input type="text" name="tingkatan" class="form-control" required>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-warning">Simpan Perubahan</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
          <!-- Modal Create -->
          <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -92,20 +56,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>                  
                 @endif
-
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Kode</th>
-                                <th>Kategori</th>
-                                <th>Tingkatan</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Kode</th>
+                                        <th>Kategori</th>
+                                        <th>Tingkatan</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     @foreach ($ketingkatans as $ketingkatan)
                                     <tr>
@@ -114,13 +78,10 @@
                                         <td>{{ $ketingkatan->kategori }}</td>
                                         <td>{{ $ketingkatan->tingkatan }}</td>
                                         <td>
-                                            <!-- Tombol Edit -->
-                                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <a href="/dashboard/ketingkatan/edit/{{$ketingkatan->id}}" class="btn btn-warning btn-sm">
                                                 <i class="bi bi-pencil-square"></i>
-                                            </button>
-                            
-                                            <!-- Tombol Hapus -->
-                                            <form action="/dashboard/ketingkatan/delete/{{$ketingkatan->id}}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                            </a>
+                                            <form action="/dashboard/ketingkatan/delete/{{$ketingkatan->id}}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm">
@@ -132,11 +93,10 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            
-                            
-                            
-                        </tbody>
-                    </table>
+                        </div>
+                    </div>
+            
+                        
                 </div>
             </div>
         </div>

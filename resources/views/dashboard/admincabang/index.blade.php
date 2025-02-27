@@ -2,9 +2,9 @@
 @section('content')
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Cabang Latihan</h1>
+            <h1 class="h3 mb-0 text-gray-800">Admin Cabang</h1>
             <a href="#" class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#createModal"><i
-                    class="fas fa-plus fa-sm text-white-50"></i> Cabang Latihan</a>
+                    class="fas fa-plus fa-sm text-white-50"></i> Admin Cabang</a>
         </div>
 
         <!-- DataTales Example -->
@@ -26,28 +26,29 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>NICL</th>
-                                <th>Nama Cabang</th>
-                                <th>Kategori</th>
-                                <th>Alamat</th>
-                                <th>SK</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Nama Cabang Latihan</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($cabanglatihans as $cabanglatihan)
+                            @foreach ($admincabangs as $admincabang)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$cabanglatihan->nicl}}</td>
-                                <td>{{$cabanglatihan->nama_cl}}</td>
-                                <td>{{$cabanglatihan->kategori_cl}}</td>
-                                <td>{{$cabanglatihan->alamat_cl}}</td>
-                                <td>{{$cabanglatihan->sk_cl}}</td>
+                                <td>{{$admincabang->username}}</td>
+                                <td>{{$admincabang->email}}</td>
+                                <td>{{$admincabang->nama_cl}}</td>
+                                <td>{{$admincabang->status}}</td>
                                 <td>
-                                    <a href="/dashboard/cabanglatihan/edit/{{$cabanglatihan->id}}" class="btn btn-warning btn-sm">
+                                    <a href="/dashboard/cabanglatihan/admincabang/edit/{{$admincabang->id}}" class="btn btn-warning btn-sm">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <form action="/dashboard/cabanglatihan/delete/{{$cabanglatihan->id}}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                    <a href="/dashboard/cabanglatihan/admincabang/show/{{$admincabang->id}}" class="btn btn-info btn-sm">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <form action="/dashboard/cabanglatihan/admincabang/delete/{{$admincabang->id}}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">
@@ -63,42 +64,38 @@
             </div>
         </div>
 
-        <!-- Modal Create -->
+        <!-- Modal Create Admin Cabang -->
         <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header bg-primary text-white">
-                        <h5 class="modal-title" id="createModalLabel">Tambah Cabang Latihan</h5>
+                        <h5 class="modal-title" id="createModalLabel">Tambah Admin Cabang</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/dashboard/cabanglatihan/store" method="POST">
+                        <form action="/dashboard/cabanglatihan/admincabang/store" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="nicl" class="form-label">NICL</label>
-                                <input type="text" class="form-control" id="nicl" name="nicl" required>
+                                <label for="kode_ac" class="form-label">Kode Admin Cabang</label>
+                                <input type="text" class="form-control" id="kode_ac" name="kode_ac">
                             </div>
                             <div class="mb-3">
-                                <label for="nama_cl" class="form-label">Nama Cabang</label>
-                                <input type="text" class="form-control" id="nama_cl" name="nama_cl" required>
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
                             </div>
                             <div class="mb-3">
-                                <label for="kategori_cl" class="form-label">Kategori</label>
-                                <input type="text" class="form-control" id="kategori_cl" name="kategori_cl" required>
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
                             </div>
                             <div class="mb-3">
-                                <label for="alamat_cl" class="form-label">Alamat</label>
-                                <input type="text" class="form-control" id="alamat_cl" name="alamat_cl" required>
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                             <div class="mb-3">
-                                <label for="sk_cl" class="form-label">SK</label>
-                                <input type="text" class="form-control" id="sk_cl" name="sk_cl" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="pelatih_cl" class="form-label">Pelatih</label>
-                                <input type="text" class="form-control" id="pelatih_cl" name="pelatih_cl" required>
+                                <label for="nama_cl" class="form-label">Nama Cabang Latihan</label>
+                                <input type="text" class="form-control" id="nama_cl" name="nama_cl">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -109,4 +106,5 @@
                 </div>
             </div>
         </div>
+
 @endsection
